@@ -42,7 +42,7 @@ header,
 }
 
 .form-wrap .hd {
-	padding-bottom: 2em;
+	padding-bottom: 1.0em;
 }
 .form-wrap .hd:nth-of-type(2) {
 	padding-top: 2em;
@@ -100,8 +100,11 @@ input[type="number"] {
 	padding: 1.5em 2em;
 	text-transform: uppercase;
 	display: block;
-
 	background: #BD4932;
+}
+
+#gen_row {
+	margin-bottom: 25px;
 }
 
 strong {

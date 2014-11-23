@@ -33,10 +33,11 @@
             <h3>Select your Gender:</h3>
           </div>
         </div>
-        <div class="row">
-          <div class="large-6 columns" ng-repeat="gen_option in gen_options">   
-            <input type="radio" ng-model="init.gen_option" ng-value="gen_option" ng-checked="selected_gen_option" name="gender" style="margin-right:5px">
+        <div class="row" id="gen_row">
+          <div class="large-12 columns" ng-repeat="gen_option in gen_options">   
+            <input type="radio" ng-model="init.gen_option" ng-value="gen_option" ng-checked="selected_gen_option" name="gender" style="margin-right:5px"><i class="{{ gen_option.icon_class }}"></i>
             {{ gen_option.gen_descrip }}
+          </div>
         </div>
         <div class="row hd">
           <div class="large-12 columns">
