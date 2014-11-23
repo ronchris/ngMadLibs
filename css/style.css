@@ -112,3 +112,7 @@ strong {
 	font-size: 1.4em;
 	color: #000000;
 }
+
+#generate:hover {
+	background:#105B63;
+}

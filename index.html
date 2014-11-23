@@ -27,64 +27,69 @@
           </div>
         </div>
       </header>
-      <div class="form-wrap" ng-controller="madlibsController" ng-init="init()">
-        <div class="row hd">
-          <div class="large-12 columns">
-            <h3>Select your Gender:</h3>
+      <!-- form -->
+      <form class="form-wrap" ng-controller="madlibsController" ng-init="init()" ng-submit="submit();" name="madlibForm">
+        <!-- form inputs -->
+        <div class="form-wrap" ng-hide="formInputs">
+          <div class="row hd">
+            <div class="large-12 columns">
+              <h3>Select your Gender:</h3>
+            </div>
           </div>
-        </div>
-        <div class="row" id="gen_row">
-          <div class="large-12 columns" ng-repeat="gen_option in gen_options">   
-            <input type="radio" ng-model="init.gen_option" ng-value="gen_option" ng-checked="selected_gen_option" name="gender" style="margin-right:5px"><i class="{{ gen_option.icon_class }}"></i>
-            {{ gen_option.gen_descrip }}
+          <div class="row" id="gen_row">
+            <div class="large-12 columns" ng-repeat="gen_option in gen_options">   
+              <input type="radio" ng-model="init.gen_option" ng-value="gen_option" ng-checked="selected_gen_option" name="gender" style="margin-right:5px" required=""><i class="{{ gen_option.icon_class }}"></i>
+              {{ gen_option.gen_descrip }}
+            </div>
           </div>
-        </div>
-        <div class="row hd">
-          <div class="large-12 columns">
-            <h3>Provide the following words:</h3>
+          <div class="row hd">
+            <div class="large-12 columns">
+              <h3>Provide the following words:</h3>
+            </div>
           </div>
-        </div>
-        <div class="row">
-            <div class="large-4 columns">
-              <input ng-model="your_name" type="text" placeholder="Your Name">
-            </div>
-            <div class="large-4 columns">
-              <input ng-model="dirty_task" type="text" placeholder="Dirty Task">
-            </div>
-            <div class="large-4 columns">
-              <input ng-model="obnox_celeb" type="text" placeholder="Obnoxious Celebrity">
-            </div>
-        </div>
-        <div class="row">
-            <div class="large-4 columns">
-              <input ng-model="job_title" type="text" placeholder="Job Title">
-            </div>
-            <div class="large-4 columns">
-              <input ng-model="celebrity" type="text" placeholder="Celebrity">
-            </div>
-            <div class="large-4 columns">
-              <input ng-model="huge_number" type="number" placeholder="Huge Number">
-            </div>
-        </div>
-        <div class="row">
-          <div class="large-4 columns">
-            <input ng-model="tedious_task" type="text" placeholder="Tedious Task">
+          <div class="row">
+              <div class="large-4 columns">
+                <input ng-model="your_name" name="your_name" type="text" placeholder="Your Name" required="">
+              </div>
+              <div class="large-4 columns">
+                <input ng-model="dirty_task" name="dirty_task" type="text" placeholder="Dirty Task" required="">
+              </div>
+              <div class="large-4 columns">
+                <input ng-model="obnox_celeb" name="obnox_celeb" type="text" placeholder="Obnoxious Celebrity" required="">
+              </div>
           </div>
-          <div class="large-4 columns">
-            <input ng-model="useless_skill" type="text" placeholder="Useless Skill">
+          <div class="row">
+              <div class="large-4 columns">
+                <input ng-model="job_title" name="job_title" type="text" placeholder="Job Title" required="">
+              </div>
+              <div class="large-4 columns">
+                <input ng-model="celebrity" name="celebrity" type="text" placeholder="Celebrity" required="">
+              </div>
+              <div class="large-4 columns">
+                <input ng-model="huge_number" name="huge_number" type="number" placeholder="Huge Number" required="">
+              </div>
           </div>
-          <div class="large-4 columns">
-            <input ng-model="adjective" type="text" placeholder="Adjective">
+          <div class="row">
+            <div class="large-4 columns">
+              <input ng-model="tedious_task" name="tedious_task" type="text" placeholder="Tedious Task" required="">
+            </div>
+            <div class="large-4 columns">
+              <input ng-model="useless_skill" name="useless_skill" type="text" placeholder="Useless Skill" required="">
+            </div>
+            <div class="large-4 columns">
+              <input ng-model="adjective" name="adjective" type="text" placeholder="Adjective" required="">
+            </div>
+          </div>
+
+          <div class="row send">
+            <div class="large-12 columns">
+              <button id="generate" class="button" type="submit">Generate Mad Lib</button>
+            </div>
           </div>
         </div>
 
-        <!-- <div class="row send">
-          <div class="large-12 columns">
-            <div class="button">Generate Mad Lib</div>
-          </div>
-        </div> -->
-     
-        <div class="row">
+        <!-- generated mad lib story -->
+        <div class="row" ng-hide="showLibs">
           <div class="large-12 columns">
             <br>
             <br>
@@ -92,9 +97,18 @@
             <br>
             <br>
             What a great decision! With {{ init.gen_option.his_her }} new skills, <strong>{{ your_name }}</strong> built a(n) <strong>{{ adjective }}</strong> robot named <strong>{{ obnox_celeb }}</strong> that not only loved <strong>{{ dirty_task }}</strong> but did it <strong>{{ huge_number }}</strong> times faster.
+            <br>
+            <br>
+            <br>
+          </div>
+          <div class="row send">
+            <div class="large-12 columns">
+              <button id="generate" class="button" type="reset" ng-click="startOver();">Start Over</button>
+            </div>
           </div>
         </div>
-      </div>
+
+      </form>
     </div>
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
