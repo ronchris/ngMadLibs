@@ -1,6 +1,7 @@
 angular.module('myApp', [])
 	.controller('madlibsController', function($scope) {
 
+		//set ng-init to pass selected gender options and pronouns for mad lib story
 	  $scope.init = function(gens) {
 	  	$scope.gen_options = [
 	  	{
@@ -17,10 +18,13 @@ angular.module('myApp', [])
 	  		his_her: 'her', 
 	  		him_her: 'her'
 	  	}];
+	  	// set the chosen gender to either of the first values 
 	  	$scope.selected_gen_option = $scope.gen_options[0];
 	  };
 
+	  // show form; set nghide to false
 	  $scope.formInputs = false;
+	  // hide generated mad lib story; set nghide to true 
 	  $scope.showLibs = true;
 
 	  $scope.submit = function() {
@@ -35,6 +39,7 @@ angular.module('myApp', [])
 	  	var validSkill			= $scope.madlibForm.useless_skill.$dirty;
 	  	var validAdjective	= $scope.madlibForm.adjective.$dirty;
 
+	  // if form fields are filled in and pass HTML5 validation, they are set to true
 	  if(validForm || validName || validTask || validObnoxCeleb || validJob || 
 	  	 validJob || validCeleb || validHugeNum || validTask ||
 	  	 validSkill || validAdjective) {
@@ -50,7 +55,9 @@ angular.module('myApp', [])
 			// show form fields; set nghide to false
 			$scope.formInputs = false;
 			// hide mad lib story; set nghide to true
-			$scope.showLibs = true;
+			$scope.showLibs = true;	
+			// clear gender radio buttons
+			$scope.selected_gen_option = false;
 		};
 
 	});
